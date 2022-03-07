@@ -14,7 +14,6 @@ class TennisGame1(val player1Name: String, val player2Name: String)
 
   def calculateScore(): String = {
     var score: String = ""
-    var tempScore = 0
     if (playerOneScore == playerTwoScore) {
       score = playerOneScore match {
         case 0 => "Love-All"
@@ -31,6 +30,7 @@ class TennisGame1(val player1Name: String, val player2Name: String)
       else score = "Win for player2"
     } else {
       for (i <- 1 until 3 by 1) {
+        var tempScore = 0
         if (i == 1) tempScore = playerOneScore
         else { score += "-"; tempScore = playerTwoScore; }
         val tempScore2 = tempScore match {
@@ -42,7 +42,7 @@ class TennisGame1(val player1Name: String, val player2Name: String)
         score += tempScore2
       }
     }
-    return score
+    score
   }
 
 }
