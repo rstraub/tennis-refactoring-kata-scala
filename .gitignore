@@ -1,0 +1,16 @@
+.DS_Store
+*.swp
+target
+.bsp
+
+# Eclipse files
+.project
+.settings/
+
+# IntelliJ files
+*.iml
+.idea/
+
+# VS
+.vs/
+.vscode/
