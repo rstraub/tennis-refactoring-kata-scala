@@ -2,10 +2,10 @@ package tennis
 
 class TennisGame1(val player1Name: String, val player2Name: String)
     extends TennisGame {
-  var m_score1: Int = 0
-  var m_score2: Int = 0
+  private var m_score1: Int = 0
+  private var m_score2: Int = 0
 
-  def wonPoint(playerName: String) {
+  def wonPoint(playerName: String): Unit = {
     if (playerName == "player1")
       m_score1 += 1
     else
