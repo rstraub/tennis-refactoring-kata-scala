@@ -13,21 +13,19 @@ class TennisGame1(val player1Name: String, val player2Name: String)
   }
 
   def calculateScore(): String = {
-    var score: String = ""
-    if (playerOneScore == playerTwoScore) score = determineEqualScore
+    if (playerOneScore == playerTwoScore) determineEqualScore
     else if (playerOneScore >= 4 || playerTwoScore >= 4) {
       val minusResult = playerOneScore - playerTwoScore
-      score =
-        if (minusResult == 1) "Advantage player1"
-        else if (minusResult == -1) "Advantage player2"
-        else if (minusResult >= 2) "Win for player1"
-        else "Win for player2"
+
+      if (minusResult == 1) "Advantage player1"
+      else if (minusResult == -1) "Advantage player2"
+      else if (minusResult >= 2) "Win for player1"
+      else "Win for player2"
     } else {
-      score = determinePlayerScore(playerOneScore) + "-" + determinePlayerScore(
+      determinePlayerScore(playerOneScore) + "-" + determinePlayerScore(
         playerTwoScore
       )
     }
-    score
   }
 
   private def determineEqualScore = {
