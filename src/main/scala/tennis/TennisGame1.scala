@@ -30,12 +30,7 @@ class TennisGame1(val player1Name: String, val player2Name: String)
           score += "-"
           tempScore = playerTwoScore
         }
-        val tempScore2 = tempScore match {
-          case 0 => "Love"
-          case 1 => "Fifteen"
-          case 2 => "Thirty"
-          case 3 => "Forty"
-        }
+        val tempScore2 = determinePlayerScore(tempScore)
         score += tempScore2
       }
     }
