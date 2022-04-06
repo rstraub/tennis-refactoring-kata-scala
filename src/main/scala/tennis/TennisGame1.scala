@@ -41,7 +41,7 @@ class TennisGame1(val player1Name: String, val player2Name: String)
     case 0 => LOVE
     case 1 => FIFTEEN
     case 2 => THIRTY
-    case _ => FORTY
+    case 3 => FORTY
   }
 
   private def determinePlayerInLead =
