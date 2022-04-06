@@ -12,11 +12,7 @@ class TennisGame2(val player1Name: String, val player2Name: String)
     var score = ""
     if (equalScores) {
       if (playerOnePoints < 3) {
-        score = playerOnePoints match {
-          case 0 => "Love"
-          case 1 => "Fifteen"
-          case 2 => "Thirty"
-        }
+        score = playerOneScore
 
         score += "-All"
       } else score = "Deuce"
@@ -83,6 +79,12 @@ class TennisGame2(val player1Name: String, val player2Name: String)
       score = "Win for player2"
     }
     score
+  }
+
+  private def playerOneScore = playerOnePoints match {
+    case 0 => "Love"
+    case 1 => "Fifteen"
+    case 2 => "Thirty"
   }
 
   private def equalScores = playerOnePoints == playerTwoPoints
