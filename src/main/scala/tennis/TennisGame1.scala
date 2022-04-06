@@ -23,16 +23,9 @@ class TennisGame1(val player1Name: String, val player2Name: String)
         else if (minusResult >= 2) "Win for player1"
         else "Win for player2"
     } else {
-      for (i <- 1 until 3 by 1) {
-        var tempScore = 0
-        if (i == 1) tempScore = playerOneScore
-        else {
-          score += "-"
-          tempScore = playerTwoScore
-        }
-        val tempScore2 = determinePlayerScore(tempScore)
-        score += tempScore2
-      }
+      score = determinePlayerScore(playerOneScore) + "-" + determinePlayerScore(
+        playerTwoScore
+      )
     }
     score
   }
