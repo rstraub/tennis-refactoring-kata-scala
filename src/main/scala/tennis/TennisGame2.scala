@@ -10,17 +10,17 @@ class TennisGame2(val player1Name: String, val player2Name: String)
     var playerOneResult = ""
     var playerTwoResult = ""
     var score = ""
-    if (equalScores && playerOnePoints < 3) {
-      score = playerOnePoints match {
-        case 0 => "Love"
-        case 1 => "Fifteen"
-        case 2 => "Thirty"
-      }
+    if (equalScores) {
+      if (playerOnePoints < 3) {
+        score = playerOnePoints match {
+          case 0 => "Love"
+          case 1 => "Fifteen"
+          case 2 => "Thirty"
+        }
 
-      score += "-All"
+        score += "-All"
+      } else score = "Deuce"
     }
-    if (equalScores && playerOnePoints >= 3)
-      score = "Deuce"
 
     if (playerOnePoints > 0 && playerTwoPoints == 0) {
       if (playerOnePoints == 1)
