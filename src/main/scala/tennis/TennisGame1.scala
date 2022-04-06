@@ -2,6 +2,7 @@ package tennis
 
 class TennisGame1(val player1Name: String, val player2Name: String)
     extends TennisGame {
+  private val SCORE_SEPARATOR = "-"
   private var playerOneScore: Int = 0
   private var playerTwoScore: Int = 0
 
@@ -22,7 +23,7 @@ class TennisGame1(val player1Name: String, val player2Name: String)
       else if (minusResult >= 2) "Win for player1"
       else "Win for player2"
     } else {
-      determinePlayerScore(playerOneScore) + "-" + determinePlayerScore(
+      determinePlayerScore(playerOneScore) + SCORE_SEPARATOR + determinePlayerScore(
         playerTwoScore
       )
     }
@@ -32,7 +33,7 @@ class TennisGame1(val player1Name: String, val player2Name: String)
     val score = determinePlayerScore(playerOneScore)
     score match {
       case "Forty" => "Deuce"
-      case _       => score + "-All"
+      case _       => score + SCORE_SEPARATOR + "All"
     }
   }
 
