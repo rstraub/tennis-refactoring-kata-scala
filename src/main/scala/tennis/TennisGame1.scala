@@ -27,7 +27,8 @@ class TennisGame1(val player1Name: String, val player2Name: String)
         var tempScore = 0
         if (i == 1) tempScore = playerOneScore
         else {
-          score += "-"; tempScore = playerTwoScore;
+          score += "-"
+          tempScore = playerTwoScore
         }
         val tempScore2 = tempScore match {
           case 0 => "Love"
@@ -42,14 +43,14 @@ class TennisGame1(val player1Name: String, val player2Name: String)
   }
 
   private def determineEqualScore = {
-    val score = determinePlayerOneScore
+    val score = determinePlayerScore(playerOneScore)
     score match {
       case "Forty" => "Deuce"
       case _       => score + "-All"
     }
   }
 
-  private def determinePlayerOneScore = playerOneScore match {
+  private def determinePlayerScore(playerScore: Int) = playerScore match {
     case 0 => "Love"
     case 1 => "Fifteen"
     case 2 => "Thirty"
