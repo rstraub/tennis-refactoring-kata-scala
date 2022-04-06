@@ -59,13 +59,12 @@ class TennisGame2(val player1Name: String, val player2Name: String)
     if (playerOnePoints > playerTwoPoints && playerTwoPoints >= 3) {
       score = "Advantage player1"
     }
+    if (playerOnePoints >= 4 && playerTwoPoints >= 0 && (playerOnePoints - playerTwoPoints) >= 2) {
+      score = "Win for player1"
+    }
 
     if (playerTwoPoints > playerOnePoints && playerOnePoints >= 3) {
       score = "Advantage player2"
-    }
-
-    if (playerOnePoints >= 4 && playerTwoPoints >= 0 && (playerOnePoints - playerTwoPoints) >= 2) {
-      score = "Win for player1"
     }
     if (playerTwoPoints >= 4 && playerOnePoints >= 0 && (playerTwoPoints - playerOnePoints) >= 2) {
       score = "Win for player2"
