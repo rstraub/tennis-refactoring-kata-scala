@@ -6,10 +6,9 @@ class TennisGame2(val player1Name: String, val player2Name: String)
   private var P1point = 0
   private var P2point = 0
 
-  private var P1res = ""
-  private var P2res = ""
-
   def calculateScore(): String = {
+    var P1res = ""
+    var P2res = ""
     var score = ""
     if (P1point == P2point && P1point < 4) {
       if (P1point == 0)
