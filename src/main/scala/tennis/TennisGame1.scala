@@ -12,7 +12,7 @@ class TennisGame1(val player1Name: String, val player2Name: String)
   private var playerTwoScore: Int = 0
 
   def wonPoint(playerName: String): Unit = {
-    if (playerName == "player1")
+    if (playerName == player1Name)
       playerOneScore += 1
     else
       playerTwoScore += 1
@@ -26,11 +26,10 @@ class TennisGame1(val player1Name: String, val player2Name: String)
 
       if (scoreDiff == 1) "Advantage " + playerInLead
       else "Win for " + playerInLead
-    } else {
+    } else
       determinePlayerScore(playerOneScore) + SCORE_SEPARATOR + determinePlayerScore(
         playerTwoScore
       )
-    }
   }
 
   private def determineEqualScore =
