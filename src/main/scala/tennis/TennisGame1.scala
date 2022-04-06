@@ -18,10 +18,11 @@ class TennisGame1(val player1Name: String, val player2Name: String)
       score = determineEqualScore
     } else if (playerOneScore >= 4 || playerTwoScore >= 4) {
       val minusResult = playerOneScore - playerTwoScore
-      if (minusResult == 1) score = "Advantage player1"
-      else if (minusResult == -1) score = "Advantage player2"
-      else if (minusResult >= 2) score = "Win for player1"
-      else score = "Win for player2"
+      score =
+        if (minusResult == 1) "Advantage player1"
+        else if (minusResult == -1) "Advantage player2"
+        else if (minusResult >= 2) "Win for player1"
+        else "Win for player2"
     } else {
       for (i <- 1 until 3 by 1) {
         var tempScore = 0
