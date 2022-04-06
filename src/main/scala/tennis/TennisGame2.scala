@@ -3,83 +3,83 @@ package tennis
 class TennisGame2(val player1Name: String, val player2Name: String)
     extends TennisGame {
 
-  private var P1point = 0
-  private var P2point = 0
+  private var playerOnePoints = 0
+  private var playerTwoPoints = 0
 
   def calculateScore(): String = {
-    var P1res = ""
-    var P2res = ""
+    var playerOneResult = ""
+    var playerTwoResult = ""
     var score = ""
-    if (P1point == P2point && P1point < 4) {
-      if (P1point == 0)
+    if (playerOnePoints == playerTwoPoints && playerOnePoints < 4) {
+      if (playerOnePoints == 0)
         score = "Love"
-      if (P1point == 1)
+      if (playerOnePoints == 1)
         score = "Fifteen"
-      if (P1point == 2)
+      if (playerOnePoints == 2)
         score = "Thirty"
       score += "-All"
     }
-    if (P1point == P2point && P1point >= 3)
+    if (playerOnePoints == playerTwoPoints && playerOnePoints >= 3)
       score = "Deuce"
 
-    if (P1point > 0 && P2point == 0) {
-      if (P1point == 1)
-        P1res = "Fifteen"
-      if (P1point == 2)
-        P1res = "Thirty"
-      if (P1point == 3)
-        P1res = "Forty"
+    if (playerOnePoints > 0 && playerTwoPoints == 0) {
+      if (playerOnePoints == 1)
+        playerOneResult = "Fifteen"
+      if (playerOnePoints == 2)
+        playerOneResult = "Thirty"
+      if (playerOnePoints == 3)
+        playerOneResult = "Forty"
 
-      P2res = "Love"
-      score = P1res + "-" + P2res
+      playerTwoResult = "Love"
+      score = playerOneResult + "-" + playerTwoResult
     }
-    if (P2point > 0 && P1point == 0) {
-      if (P2point == 1)
-        P2res = "Fifteen"
-      if (P2point == 2)
-        P2res = "Thirty"
-      if (P2point == 3)
-        P2res = "Forty"
+    if (playerTwoPoints > 0 && playerOnePoints == 0) {
+      if (playerTwoPoints == 1)
+        playerTwoResult = "Fifteen"
+      if (playerTwoPoints == 2)
+        playerTwoResult = "Thirty"
+      if (playerTwoPoints == 3)
+        playerTwoResult = "Forty"
 
-      P1res = "Love"
-      score = P1res + "-" + P2res
-    }
-
-    if (P1point > P2point && P1point < 4) {
-      if (P1point == 2)
-        P1res = "Thirty"
-      if (P1point == 3)
-        P1res = "Forty"
-      if (P2point == 1)
-        P2res = "Fifteen"
-      if (P2point == 2)
-        P2res = "Thirty"
-      score = P1res + "-" + P2res
-    }
-    if (P2point > P1point && P2point < 4) {
-      if (P2point == 2)
-        P2res = "Thirty"
-      if (P2point == 3)
-        P2res = "Forty"
-      if (P1point == 1)
-        P1res = "Fifteen"
-      if (P1point == 2)
-        P1res = "Thirty"
-      score = P1res + "-" + P2res
+      playerOneResult = "Love"
+      score = playerOneResult + "-" + playerTwoResult
     }
 
-    if (P1point > P2point && P2point >= 3) {
+    if (playerOnePoints > playerTwoPoints && playerOnePoints < 4) {
+      if (playerOnePoints == 2)
+        playerOneResult = "Thirty"
+      if (playerOnePoints == 3)
+        playerOneResult = "Forty"
+      if (playerTwoPoints == 1)
+        playerTwoResult = "Fifteen"
+      if (playerTwoPoints == 2)
+        playerTwoResult = "Thirty"
+      score = playerOneResult + "-" + playerTwoResult
+    }
+    if (playerTwoPoints > playerOnePoints && playerTwoPoints < 4) {
+      if (playerTwoPoints == 2)
+        playerTwoResult = "Thirty"
+      if (playerTwoPoints == 3)
+        playerTwoResult = "Forty"
+      if (playerOnePoints == 1)
+        playerOneResult = "Fifteen"
+      if (playerOnePoints == 2)
+        playerOneResult = "Thirty"
+      score = playerOneResult + "-" + playerTwoResult
+    }
+
+    if (playerOnePoints > playerTwoPoints && playerTwoPoints >= 3) {
       score = "Advantage player1"
     }
 
-    if (P2point > P1point && P1point >= 3) {
+    if (playerTwoPoints > playerOnePoints && playerOnePoints >= 3) {
       score = "Advantage player2"
     }
 
-    if (P1point >= 4 && P2point >= 0 && (P1point - P2point) >= 2) {
+    if (playerOnePoints >= 4 && playerTwoPoints >= 0 && (playerOnePoints - playerTwoPoints) >= 2) {
       score = "Win for player1"
     }
-    if (P2point >= 4 && P1point >= 0 && (P2point - P1point) >= 2) {
+    if (playerTwoPoints >= 4 && playerOnePoints >= 0 && (playerTwoPoints - playerOnePoints) >= 2) {
       score = "Win for player2"
     }
     score
@@ -93,10 +93,10 @@ class TennisGame2(val player1Name: String, val player2Name: String)
   }
 
   private def P2Score(): Unit = {
-    P2point += 1
+    playerTwoPoints += 1
   }
 
   private def P1Score(): Unit = {
-    P1point += 1
+    playerOnePoints += 1
   }
 }
