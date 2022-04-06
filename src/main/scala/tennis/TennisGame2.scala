@@ -15,17 +15,12 @@ class TennisGame2(val player1Name: String, val player2Name: String)
       else score = "Deuce"
     }
 
-    if (playerOnePoints > 0 && playerTwoPoints == 0) {
-      if (playerOnePoints == 1)
-        playerOneResult = "Fifteen"
-      if (playerOnePoints == 2)
-        playerOneResult = "Thirty"
-      if (playerOnePoints == 3)
-        playerOneResult = "Forty"
-
-      playerTwoResult = "Love"
+    if (playerOnePoints > 0 && playerTwoPoints == 0 && playerOnePoints < 4) {
+      playerOneResult = pointsAsScore(playerOnePoints)
+      playerTwoResult = pointsAsScore(playerTwoPoints)
       score = playerOneResult + "-" + playerTwoResult
     }
+
     if (playerTwoPoints > 0 && playerOnePoints == 0) {
       if (playerTwoPoints == 1)
         playerTwoResult = "Fifteen"
@@ -82,6 +77,7 @@ class TennisGame2(val player1Name: String, val player2Name: String)
     case 0 => "Love"
     case 1 => "Fifteen"
     case 2 => "Thirty"
+    case 3 => "Forty"
   }
 
   private def equalScores = playerOnePoints == playerTwoPoints
