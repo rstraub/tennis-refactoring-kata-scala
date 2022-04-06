@@ -21,12 +21,11 @@ class TennisGame1(val player1Name: String, val player2Name: String)
   def calculateScore(): String = {
     if (playerOneScore == playerTwoScore) determineEqualScore
     else if (playerOneScore >= 4 || playerTwoScore >= 4) {
-      val minusResult = playerOneScore - playerTwoScore
+      val scoreDiff = Math.abs(playerOneScore - playerTwoScore)
+      val playerInLead = determinePlayerInLead
 
-      if (minusResult == 1) "Advantage player1"
-      else if (minusResult == -1) "Advantage player2"
-      else if (minusResult >= 2) "Win for player1"
-      else "Win for player2"
+      if (scoreDiff == 1) "Advantage " + playerInLead
+      else "Win for " + playerInLead
     } else {
       determinePlayerScore(playerOneScore) + SCORE_SEPARATOR + determinePlayerScore(
         playerTwoScore
@@ -44,4 +43,9 @@ class TennisGame1(val player1Name: String, val player2Name: String)
     case 2 => THIRTY
     case _ => FORTY
   }
+
+  private def determinePlayerInLead =
+    if (playerOneScore > playerTwoScore) player1Name
+    else if (playerTwoScore > playerOneScore) player2Name
+    else "tie"
 }
