@@ -87,16 +87,16 @@ class TennisGame2(val player1Name: String, val player2Name: String)
 
   def wonPoint(player: String): Unit = {
     if (player == "player1")
-      P1Score()
+      addPointForPlayerOne()
     else
-      P2Score()
+      addPointForPlayerTwo()
   }
 
-  private def P2Score(): Unit = {
+  private def addPointForPlayerTwo(): Unit = {
     playerTwoPoints += 1
   }
 
-  private def P1Score(): Unit = {
+  private def addPointForPlayerOne(): Unit = {
     playerOnePoints += 1
   }
 }
