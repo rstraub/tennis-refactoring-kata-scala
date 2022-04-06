@@ -1,26 +1,15 @@
 package tennis
 
 import org.junit.Assert._
-
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import org.junit.runners.Parameterized.Parameters
+
 import java.util
 
 @RunWith(classOf[Parameterized])
 class TennisTest(params: TennisTestCase) {
-
-  def checkScores(game: TennisGame): Unit = {
-    val highestScore = Math.max(params.player1Score, params.player2Score)
-    for (i <- 0 until highestScore by 1) {
-      if (i < params.player1Score)
-        game.wonPoint("player1")
-      if (i < params.player2Score)
-        game.wonPoint("player2")
-    }
-    assertEquals(params.expectedScore, game.calculateScore())
-  }
 
   @Test
   def checkGame1(): Unit = {
@@ -33,10 +22,22 @@ class TennisTest(params: TennisTestCase) {
     val game = new TennisGame2("player1", "player2")
     checkScores(game)
   }
+
   @Test
   def checkGame3(): Unit = {
     val game = new TennisGame3("player1", "player2")
     checkScores(game)
+  }
+
+  def checkScores(game: TennisGame): Unit = {
+    val highestScore = Math.max(params.player1Score, params.player2Score)
+    for (i <- 0 until highestScore by 1) {
+      if (i < params.player1Score)
+        game.wonPoint("player1")
+      if (i < params.player2Score)
+        game.wonPoint("player2")
+    }
+    assertEquals(params.expectedScore, game.calculateScore())
   }
 
 }
@@ -51,6 +52,7 @@ object TennisTest {
       new TennisTestCase(1, 1, "Fifteen-All"),
       new TennisTestCase(2, 2, "Thirty-All"),
       new TennisTestCase(3, 3, "Deuce"),
+      new TennisTestCase(10, 10, "Deuce"),
       new TennisTestCase(4, 4, "Deuce"),
       new TennisTestCase(1, 0, "Fifteen-Love"),
       new TennisTestCase(0, 1, "Love-Fifteen"),

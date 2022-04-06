@@ -34,13 +34,9 @@ class TennisGame1(val player1Name: String, val player2Name: String)
     }
   }
 
-  private def determineEqualScore = {
-    val score = determinePlayerScore(playerOneScore)
-    score match {
-      case FORTY => "Deuce"
-      case _     => score + SCORE_SEPARATOR + "All"
-    }
-  }
+  private def determineEqualScore =
+    if (playerOneScore >= 3) "Deuce"
+    else determinePlayerScore(playerOneScore) + SCORE_SEPARATOR + "All"
 
   private def determinePlayerScore(playerScore: Int) = playerScore match {
     case 0 => LOVE
