@@ -9,24 +9,22 @@ class TennisGame2(val player1Name: String, val player2Name: String)
   def calculateScore(): String = {
     var playerOneResult = ""
     var playerTwoResult = ""
-    var score = ""
     if (equalScores) {
-      if (playerOnePoints < 3) score = pointsAsScore(playerOnePoints) + "-All"
-      else score = "Deuce"
+      if (playerOnePoints < 3) pointsAsScore(playerOnePoints) + "-All"
+      else "Deuce"
     } else if (playerOnePoints < 4 && playerTwoPoints < 4) {
       playerOneResult = pointsAsScore(playerOnePoints)
       playerTwoResult = pointsAsScore(playerTwoPoints)
-      score = playerOneResult + "-" + playerTwoResult
+      playerOneResult + "-" + playerTwoResult
     } else if (playerOnePoints >= 4 && playerTwoPoints >= 0 && (playerOnePoints - playerTwoPoints) >= 2) {
-      score = "Win for player1"
+      "Win for player1"
     } else if (playerOnePoints > playerTwoPoints && playerTwoPoints >= 3) {
-      score = "Advantage player1"
+      "Advantage player1"
     } else if (playerTwoPoints >= 4 && playerOnePoints >= 0 && (playerTwoPoints - playerOnePoints) >= 2) {
-      score = "Win for player2"
+      "Win for player2"
     } else if (playerTwoPoints > playerOnePoints && playerOnePoints >= 3) {
-      score = "Advantage player2"
-    }
-    score
+      "Advantage player2"
+    } else throw new IllegalStateException("points are inconsistent")
   }
 
   private def pointsAsScore(points: Int): String = points match {
