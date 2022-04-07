@@ -12,15 +12,15 @@ class TennisGame2(val player1Name: String, val player2Name: String)
     if (equalScores) {
       if (playerOnePoints < 3) pointsAsScore(playerOnePoints) + "-All"
       else "Deuce"
-    } else if (playerOnePoints < minimumPointsToWin && playerTwoPoints < 4) {
+    } else if (playerOnePoints < minimumPointsToWin && playerTwoPoints < minimumPointsToWin) {
       val playerOneResult = pointsAsScore(playerOnePoints)
       val playerTwoResult = pointsAsScore(playerTwoPoints)
       playerOneResult + "-" + playerTwoResult
-    } else if (playerOnePoints >= minimumPointsToWin && playerTwoPoints >= 0 && (playerOnePoints - playerTwoPoints) >= minimumPointDifference) {
+    } else if (playerOnePoints >= minimumPointsToWin && (playerOnePoints - playerTwoPoints) >= minimumPointDifference) {
       "Win for player1"
     } else if (playerOnePoints > playerTwoPoints && playerTwoPoints >= 3) {
       "Advantage player1"
-    } else if (playerTwoPoints >= minimumPointsToWin && playerOnePoints >= 0 && (playerTwoPoints - playerOnePoints) >= minimumPointDifference) {
+    } else if (playerTwoPoints >= minimumPointsToWin && (playerTwoPoints - playerOnePoints) >= minimumPointDifference) {
       "Win for player2"
     } else if (playerTwoPoints > playerOnePoints && playerOnePoints >= 3) {
       "Advantage player2"
