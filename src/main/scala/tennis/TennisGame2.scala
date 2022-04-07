@@ -10,12 +10,10 @@ class TennisGame2(val player1Name: String, val player2Name: String)
 
   def calculateScore(): String = {
     if (equalScores) {
-      if (playerOnePoints < 3) pointsAsScore(playerOnePoints) + "-All"
+      if (playerOnePoints < 3) toScore(playerOnePoints) + "-All"
       else "Deuce"
     } else if (playerOnePoints < minimumPointsToWin && playerTwoPoints < minimumPointsToWin) {
-      val playerOneResult = pointsAsScore(playerOnePoints)
-      val playerTwoResult = pointsAsScore(playerTwoPoints)
-      playerOneResult + "-" + playerTwoResult
+      toScore(playerOnePoints) + "-" + toScore(playerTwoPoints)
     } else {
       if (playerOnePoints > playerTwoPoints) {
         val diff = playerOnePoints - playerTwoPoints
@@ -29,7 +27,7 @@ class TennisGame2(val player1Name: String, val player2Name: String)
     }
   }
 
-  private def pointsAsScore(points: Int): String = points match {
+  private def toScore(points: Int): String = points match {
     case 0 => "Love"
     case 1 => "Fifteen"
     case 2 => "Thirty"
