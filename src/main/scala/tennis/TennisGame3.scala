@@ -28,19 +28,17 @@ class TennisGame3(val playerOneName: String, val playerTwoName: String)
     else
       playerTwo.wonPoint()
   }
-
-  private def toScore(points: Int): String = {
-    val scores = Array("Love", "Fifteen", "Thirty", "Forty")
-    scores(points)
-  }
 }
 
 private class Player(val name: String) {
   private var _points = 0
 
-  def score: String = {
-    val scores = Array("Love", "Fifteen", "Thirty", "Forty")
-    scores(points)
+  def score: String = _points match {
+    case 0 => "Love"
+    case 1 => "Fifteen"
+    case 2 => "Thirty"
+    case 3 => "Forty"
+    case _ => "Advantage/Win"
   }
 
   def points: Int = _points
