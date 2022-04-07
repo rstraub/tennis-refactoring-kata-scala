@@ -9,16 +9,22 @@ class TennisGame2(val player1Name: String, val player2Name: String)
   private var playerTwoPoints = 0
 
   def calculateScore(): String = {
-    if (equalScores) {
-      if (playerOnePoints < 3) toScore(playerOnePoints) + "-All"
-      else "Deuce"
-    } else if (playerOnePoints >= minimumPointsToWin || playerTwoPoints >= minimumPointsToWin) {
-      val leader =
-        if (playerOnePoints > playerTwoPoints) player1Name else player2Name
-      val diff = Math.abs(playerOnePoints - playerTwoPoints)
-      if (diff >= minimumPointDifference) "Win for " + leader
-      else "Advantage " + leader
-    } else toScore(playerOnePoints) + "-" + toScore(playerTwoPoints)
+    if (playerOnePoints >= minimumPointsToWin || playerTwoPoints >= minimumPointsToWin) {
+      if (equalScores) "Deuce"
+      else {
+        val leader =
+          if (playerOnePoints > playerTwoPoints) player1Name else player2Name
+        val diff = Math.abs(playerOnePoints - playerTwoPoints)
+        if (diff >= minimumPointDifference) "Win for " + leader
+        else "Advantage " + leader
+      }
+    } else {
+      if (equalScores) {
+        if (playerOnePoints < 3)
+          toScore(playerOnePoints) + "-All"
+        else "Deuce"
+      } else toScore(playerOnePoints) + "-" + toScore(playerTwoPoints)
+    }
   }
 
   private def toScore(points: Int): String = points match {
