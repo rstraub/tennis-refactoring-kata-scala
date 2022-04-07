@@ -13,55 +13,18 @@ class TennisGame2(val player1Name: String, val player2Name: String)
     if (equalScores) {
       if (playerOnePoints < 3) score = pointsAsScore(playerOnePoints) + "-All"
       else score = "Deuce"
-    }
-
-    if (playerOnePoints > 0 && playerTwoPoints == 0 && playerOnePoints < 4) {
+    } else if (playerOnePoints < 4 && playerTwoPoints < 4) {
       playerOneResult = pointsAsScore(playerOnePoints)
       playerTwoResult = pointsAsScore(playerTwoPoints)
       score = playerOneResult + "-" + playerTwoResult
-    }
-
-    if (playerTwoPoints > 0 && playerOnePoints == 0 && playerTwoPoints < 4) {
-      playerOneResult = pointsAsScore(playerOnePoints)
-      playerTwoResult = pointsAsScore(playerTwoPoints)
-      score = playerOneResult + "-" + playerTwoResult
-    }
-
-    if (playerOnePoints > playerTwoPoints && playerOnePoints < 4) {
-      if (playerOnePoints == 2)
-        playerOneResult = "Thirty"
-      if (playerOnePoints == 3)
-        playerOneResult = "Forty"
-      if (playerTwoPoints == 1)
-        playerTwoResult = "Fifteen"
-      if (playerTwoPoints == 2)
-        playerTwoResult = "Thirty"
-      score = playerOneResult + "-" + playerTwoResult
-    }
-    if (playerTwoPoints > playerOnePoints && playerTwoPoints < 4) {
-      if (playerTwoPoints == 2)
-        playerTwoResult = "Thirty"
-      if (playerTwoPoints == 3)
-        playerTwoResult = "Forty"
-      if (playerOnePoints == 1)
-        playerOneResult = "Fifteen"
-      if (playerOnePoints == 2)
-        playerOneResult = "Thirty"
-      score = playerOneResult + "-" + playerTwoResult
-    }
-
-    if (playerOnePoints > playerTwoPoints && playerTwoPoints >= 3) {
-      score = "Advantage player1"
-    }
-    if (playerOnePoints >= 4 && playerTwoPoints >= 0 && (playerOnePoints - playerTwoPoints) >= 2) {
+    } else if (playerOnePoints >= 4 && playerTwoPoints >= 0 && (playerOnePoints - playerTwoPoints) >= 2) {
       score = "Win for player1"
-    }
-
-    if (playerTwoPoints > playerOnePoints && playerOnePoints >= 3) {
-      score = "Advantage player2"
-    }
-    if (playerTwoPoints >= 4 && playerOnePoints >= 0 && (playerTwoPoints - playerOnePoints) >= 2) {
+    } else if (playerOnePoints > playerTwoPoints && playerTwoPoints >= 3) {
+      score = "Advantage player1"
+    } else if (playerTwoPoints >= 4 && playerOnePoints >= 0 && (playerTwoPoints - playerOnePoints) >= 2) {
       score = "Win for player2"
+    } else if (playerTwoPoints > playerOnePoints && playerOnePoints >= 3) {
+      score = "Advantage player2"
     }
     score
   }
