@@ -15,15 +15,11 @@ class TennisGame2(val player1Name: String, val player2Name: String)
     } else if (playerOnePoints < minimumPointsToWin && playerTwoPoints < minimumPointsToWin) {
       toScore(playerOnePoints) + "-" + toScore(playerTwoPoints)
     } else {
-      if (playerOnePoints > playerTwoPoints) {
-        val diff = playerOnePoints - playerTwoPoints
-        if (diff >= minimumPointDifference) "Win for player1"
-        else "Advantage player1"
-      } else {
-        val diff = playerTwoPoints - playerOnePoints
-        if (diff >= minimumPointDifference) "Win for player2"
-        else "Advantage player2"
-      }
+      val leader =
+        if (playerOnePoints > playerTwoPoints) player1Name else player2Name
+      val diff = Math.abs(playerOnePoints - playerTwoPoints)
+      if (diff >= minimumPointDifference) "Win for " + leader
+      else "Advantage " + leader
     }
   }
 
