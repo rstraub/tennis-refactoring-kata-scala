@@ -25,7 +25,7 @@ class TennisGame3(val playerOneName: String, val playerTwoName: String)
   }
 
   def wonPoint(playerName: String): Unit = {
-    if (playerName == "player1")
+    if (playerName == playerOneName)
       this.playerOneScore += 1
     else
       this.playerTwoScore += 1
