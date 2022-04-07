@@ -7,11 +7,10 @@ class TennisGame3(val playerOneName: String, val playerTwoName: String)
 
   def calculateScore(): String = {
     if (playerOne.points < 4 && playerTwo.points < 4 && !(playerOne.points + playerTwo.points == 6)) {
-      var result: String = ""
-      val p = Array("Love", "Fifteen", "Thirty", "Forty")
-      result = p(playerOne.points)
+      val scores = Array("Love", "Fifteen", "Thirty", "Forty")
+      val result = scores(playerOne.points)
       if (playerOne.points == playerTwo.points) result + "-All"
-      else result + "-" + p(playerTwo.points)
+      else result + "-" + scores(playerTwo.points)
     } else {
       if (playerOne.points == playerTwo.points) "Deuce"
       else {
