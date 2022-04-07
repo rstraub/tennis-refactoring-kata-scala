@@ -2,6 +2,8 @@ package tennis
 
 class TennisGame3(val playerOneName: String, val playerTwoName: String)
     extends TennisGame {
+  private val playerOne = new Player(playerOneName)
+  private val playerTwo = new Player(playerTwoName)
   private var playerTwoScore: Int = 0
   private var playerOneScore: Int = 0
 
@@ -31,3 +33,5 @@ class TennisGame3(val playerOneName: String, val playerTwoName: String)
       playerTwoScore += 1
   }
 }
+
+private class Player(val name: String, val points: Int = 0)
