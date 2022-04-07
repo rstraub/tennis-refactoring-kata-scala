@@ -21,15 +21,9 @@ class TennisGame2(val player1Name: String, val player2Name: String)
       score = playerOneResult + "-" + playerTwoResult
     }
 
-    if (playerTwoPoints > 0 && playerOnePoints == 0) {
-      if (playerTwoPoints == 1)
-        playerTwoResult = "Fifteen"
-      if (playerTwoPoints == 2)
-        playerTwoResult = "Thirty"
-      if (playerTwoPoints == 3)
-        playerTwoResult = "Forty"
-
-      playerOneResult = "Love"
+    if (playerTwoPoints > 0 && playerOnePoints == 0 && playerTwoPoints < 4) {
+      playerOneResult = pointsAsScore(playerOnePoints)
+      playerTwoResult = pointsAsScore(playerTwoPoints)
       score = playerOneResult + "-" + playerTwoResult
     }
 
