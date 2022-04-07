@@ -4,22 +4,20 @@ class TennisGame3(val playerOneName: String, val playerTwoName: String)
     extends TennisGame {
   private val playerOne = new Player(playerOneName)
   private val playerTwo = new Player(playerTwoName)
-  private var playerTwoScore: Int = 0
-  private var playerOneScore: Int = 0
-
   def calculateScore(): String = {
     var s: String = ""
-    if (playerOneScore < 4 && playerTwoScore < 4 && !(playerOneScore + playerTwoScore == 6)) {
+    if (playerOne.points < 4 && playerTwo.points < 4 && !(playerOne.points + playerTwo.points == 6)) {
       val p = Array("Love", "Fifteen", "Thirty", "Forty")
-      s = p(playerOneScore)
-      if (playerOneScore == playerTwoScore) s + "-All"
-      else s + "-" + p(playerTwoScore)
+      s = p(playerOne.points)
+      if (playerOne.points == playerTwo.points) s + "-All"
+      else s + "-" + p(playerTwo.points)
     } else {
-      if (playerOneScore == playerTwoScore) "Deuce"
+      if (playerOne.points == playerTwo.points) "Deuce"
       else {
         s =
-          if (playerOneScore > playerTwoScore) playerOneName else playerTwoName
-        if ((playerOneScore - playerTwoScore) * (playerOneScore - playerTwoScore) == 1)
+          if (playerOne.points > playerTwo.points) playerOneName
+          else playerTwoName
+        if ((playerOne.points - playerTwo.points) * (playerOne.points - playerTwo.points) == 1)
           "Advantage " + s
         else "Win for " + s
       }
@@ -28,10 +26,18 @@ class TennisGame3(val playerOneName: String, val playerTwoName: String)
 
   def wonPoint(playerName: String): Unit = {
     if (playerName == playerOneName)
-      playerOneScore += 1
+      playerOne.wonPoint()
     else
-      playerTwoScore += 1
+      playerTwo.wonPoint()
   }
 }
 
-private class Player(val name: String, val points: Int = 0)
+private class Player(val name: String) {
+  private var _points = 0
+
+  def points: Int = _points
+
+  def wonPoint(): Unit = {
+    _points += 1
+  }
+}
