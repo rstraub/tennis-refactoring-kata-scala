@@ -16,15 +16,17 @@ class TennisGame2(val player1Name: String, val player2Name: String)
       val playerOneResult = pointsAsScore(playerOnePoints)
       val playerTwoResult = pointsAsScore(playerTwoPoints)
       playerOneResult + "-" + playerTwoResult
-    } else if ((playerOnePoints - playerTwoPoints) >= minimumPointDifference) {
-      "Win for player1"
-    } else if (playerOnePoints > playerTwoPoints && playerTwoPoints >= 3) {
-      "Advantage player1"
-    } else if ((playerTwoPoints - playerOnePoints) >= minimumPointDifference) {
-      "Win for player2"
-    } else if (playerTwoPoints > playerOnePoints && playerOnePoints >= 3) {
-      "Advantage player2"
-    } else throw new IllegalStateException("points are inconsistent")
+    } else {
+      if ((playerOnePoints - playerTwoPoints) >= minimumPointDifference) {
+        "Win for player1"
+      } else if (playerOnePoints > playerTwoPoints && playerTwoPoints >= 3) {
+        "Advantage player1"
+      } else if ((playerTwoPoints - playerOnePoints) >= minimumPointDifference) {
+        "Win for player2"
+      } else {
+        "Advantage player2"
+      }
+    }
   }
 
   private def pointsAsScore(points: Int): String = points match {
