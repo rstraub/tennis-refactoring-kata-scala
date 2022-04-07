@@ -6,8 +6,8 @@ class TennisGame3(val playerOneName: String, val playerTwoName: String)
   private val playerTwo = new Player(playerTwoName)
 
   def calculateScore(): String = {
-    var result: String = ""
     if (playerOne.points < 4 && playerTwo.points < 4 && !(playerOne.points + playerTwo.points == 6)) {
+      var result: String = ""
       val p = Array("Love", "Fifteen", "Thirty", "Forty")
       result = p(playerOne.points)
       if (playerOne.points == playerTwo.points) result + "-All"
@@ -15,12 +15,12 @@ class TennisGame3(val playerOneName: String, val playerTwoName: String)
     } else {
       if (playerOne.points == playerTwo.points) "Deuce"
       else {
-        result =
+        val leader =
           if (playerOne.points > playerTwo.points) playerOneName
           else playerTwoName
         if ((playerOne.points - playerTwo.points) * (playerOne.points - playerTwo.points) == 1)
-          "Advantage " + result
-        else "Win for " + result
+          "Advantage " + leader
+        else "Win for " + leader
       }
     }
   }
