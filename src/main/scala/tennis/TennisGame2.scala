@@ -4,6 +4,7 @@ class TennisGame2(val player1Name: String, val player2Name: String)
     extends TennisGame {
 
   private val minimumPointsToWin = 4
+  private val minimumPointDifference = 2
   private var playerOnePoints = 0
   private var playerTwoPoints = 0
 
@@ -17,11 +18,11 @@ class TennisGame2(val player1Name: String, val player2Name: String)
       playerOneResult = pointsAsScore(playerOnePoints)
       playerTwoResult = pointsAsScore(playerTwoPoints)
       playerOneResult + "-" + playerTwoResult
-    } else if (playerOnePoints >= minimumPointsToWin && playerTwoPoints >= 0 && (playerOnePoints - playerTwoPoints) >= 2) {
+    } else if (playerOnePoints >= minimumPointsToWin && playerTwoPoints >= 0 && (playerOnePoints - playerTwoPoints) >= minimumPointDifference) {
       "Win for player1"
     } else if (playerOnePoints > playerTwoPoints && playerTwoPoints >= 3) {
       "Advantage player1"
-    } else if (playerTwoPoints >= minimumPointsToWin && playerOnePoints >= 0 && (playerTwoPoints - playerOnePoints) >= 2) {
+    } else if (playerTwoPoints >= minimumPointsToWin && playerOnePoints >= 0 && (playerTwoPoints - playerOnePoints) >= minimumPointDifference) {
       "Win for player2"
     } else if (playerTwoPoints > playerOnePoints && playerOnePoints >= 3) {
       "Advantage player2"
