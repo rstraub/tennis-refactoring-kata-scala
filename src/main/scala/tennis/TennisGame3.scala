@@ -1,6 +1,7 @@
 package tennis
 
-class TennisGame3(val p1N: String, val p2N: String) extends TennisGame {
+class TennisGame3(val playerOneName: String, val playerTwoName: String)
+    extends TennisGame {
   private var playerTwoScore: Int = 0
   private var playerOneScore: Int = 0
 
@@ -14,7 +15,8 @@ class TennisGame3(val p1N: String, val p2N: String) extends TennisGame {
     } else {
       if (playerOneScore == playerTwoScore) "Deuce"
       else {
-        s = if (playerOneScore > playerTwoScore) p1N else p2N
+        s =
+          if (playerOneScore > playerTwoScore) playerOneName else playerTwoName
         if ((playerOneScore - playerTwoScore) * (playerOneScore - playerTwoScore) == 1)
           "Advantage " + s
         else "Win for " + s
